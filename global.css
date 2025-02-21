@@ -1,0 +1,32 @@
+body {
+    font: 100%/1.5 system-ui, sans-serif;
+    display: flex;
+    flex-flow: column;
+    max-width: 80em;
+    min-height: 100vh;
+    box-sizing: border-box;
+    margin: auto;
+    padding: 1em;
+    justify-content: center; /* Center horizontally */
+    align-items: center;     /* Center vertically */
+  }
+body,html{
+    margin: 0;
+    padding: 5;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center; /*Center horizontally */
+    align-items: center;     /*Center vertically*/
+}
+
+h1 {
+    font-family: 'Arial', sans-serif;
+    font-size: 40px;
+}
+
+#map {
+    width: 100%;    /* Adjust width to your desired size */
+    height: 100%;   /* Adjust height to your desired size */
+  }
+
