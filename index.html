@@ -15,7 +15,22 @@
 <body>
   <h1>🚴🏼‍♀️ Bikewatching</h1>
 
-  <div id="map"></div>
+
+  <label>
+      Filter by time:
+    <input type="range" id="time-slider" min="-1" max="1440" value="-1" step="-1">
+    <time id="selected-time">00:00</time>
+    <em id="any-time">(Any Time)</em>
+  </label>
+
+
+  <div id="map">
+    <svg></svg>
+  </div>
+
+    <!--Lab7 step3.1-->
+    <!-- Load D3.js from CDN -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
 
     <!--Lab7 step1.1-->
     <!-- Mapbox GL JS JavaScript -->
