@@ -1,6 +1,6 @@
 //Lab7 step 1.3
   // Set your Mapbox access token here
-mapboxgl.accessToken = 'pk.eyJ1IjoiamluMDEwIiwiYSI6ImNtN2VhYTh5OTBiazYya29ndGdlcDhhc3kifQ.2H0PSYmOAcJBPDBXwl_dPg';
+  mapboxgl.accessToken = 'pk.eyJ1IjoiamluMDEwIiwiYSI6ImNtN2VhYTh5OTBiazYya29ndGdlcDhhc3kifQ.2H0PSYmOAcJBPDBXwl_dPg';
 
 
   const svg = d3.select('#map').select('svg');
@@ -176,6 +176,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamluMDEwIiwiYSI6ImNtN2VhYTh5OTBiazYya29ndGdlc
           .domain([0, d3.max(stations, (d) => d.totalTraffic)])
           .range([0, 25]);
       
+      let stationFlow = d3.scaleQuantize().domain([0,1]).range([0,0.5,1]);
         // Select and update circles with filtered data
         const circles = svg.selectAll('circle')
           .data(stations, (d) => d.short_name); // Use short_name as the key to track circles
@@ -197,6 +198,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamluMDEwIiwiYSI6ImNtN2VhYTh5OTBiazYya29ndGdlc
         // Update existing circles
         circles
           .attr('r', (d) => radiusScale(d.totalTraffic))  // Update radius based on total traffic
+          .style("--departure-ratio", d => stationFlow(d.departures / d.totalTraffic)) 
           .each(function(d) {
             d3.select(this)
               .select('title')
@@ -259,9 +261,3 @@ function getCoords(station) {
   const { x, y } = map.project(point);  // Project to pixel coordinates
   return { cx: x, cy: y };  // Return as object for use in SVG attributes
 }
-  
-
-
-  
-  
-  

@@ -42,11 +42,64 @@ h1 {
 }
 
 
-circle {
-  fill: rgba(252, 130, 8, 0.956); /* Change to any color you want */
-  stroke: rgba(240, 177, 61, 0.956);
+#map circle {
+  /* fill: rgba(252, 130, 8, 0.956); /* Change to any color you want */
+  /* stroke: rgba(240, 177, 61, 0.956); */ 
   opacity: 70%;
   pointer-events: auto;
+
+  --color-departures: rgba(221, 236, 49, 0.956);
+  --color-arrivals: rgba(34, 180, 224, 0.956);
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  fill: var(--color);
+}
+
+.legend {
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row; /* Align items horizontally */
+  gap: 100px;
+  margin: 10px;
+}
+
+.legend div {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px; /* Adds spacing between each div */
+}
+
+.legend span {
+  display: inline-block;
+  width: 20px; /* Size of the color box */
+  height: 20px;
+  margin-left: 8px; /* Space between text and color box */
+  border-radius: 4px; /* Optional: rounded corners */
+}
+
+.legend div[style*="--departure-ratio: 1"] .departures {
+  background-color:  rgba(221, 236, 49, 0.956); /* Red for more departures */
+  margin-left: 5px;
+}
+
+.legend div[style*="--departure-ratio: 0.5"] .balanced {
+  --color-departures: rgba(221, 236, 49, 0.956);
+  --color-arrivals: rgba(34, 180, 224, 0.956);
+  --color: color-mix(
+    in oklch,
+    var(--color-departures) calc(100% * var(--departure-ratio)),
+    var(--color-arrivals)
+  );
+  background-color: var(--color);
+  margin-left: 5px;
+}
+
+.legend div[style*="--departure-ratio: 0"] .arrivals {
+  background-color: rgba(34, 180, 224, 0.956); /* Red for more departures */
+  margin-left: 5px;
 }
 
 header {
