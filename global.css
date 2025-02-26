@@ -113,6 +113,7 @@ label {
   align-items: baseline;
   gap: 0.5em;
   margin-left: auto;  /* Push to the right */
+  flex-direction: column; /* Stack items vertically */
 }
 
 /* Styling for the time display */
@@ -128,4 +129,8 @@ em {
   display: block;
   font-style: italic;
   color: #888; /* Lighter color for emphasis */
+}
+
+#time-slider{
+  width: 400px;
 }
